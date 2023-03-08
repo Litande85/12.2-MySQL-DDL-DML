@@ -41,8 +41,6 @@ ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass
 wget https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
 sudo dpkg -i dbeaver-ce_latest_amd64.deb
 dbeaver &
-
-sudo apt-get install mysql\*
 ```
 
 
@@ -96,9 +94,9 @@ ALTER USER 'sys_temp'@'localhost' IDENTIFIED WITH mysql_native_password BY '1';
 SELECT user();
 ```
 
-![sys_temp](img/img%202023-03-08%20192426.png)
+![sys_temp](img/img%202023-03-08%20201444.png)
 
-1.6. По ссылке https://downloads.mysql.com/docs/sakila-db.zip скачайте дамп базы данных.
+1.6. По ссылке https://downloads.mysql.com/docs/sakila-db.zip скачан дамп базы данных, затем распакован.
 
 ```bash
 wget https://downloads.mysql.com/docs/sakila-db.zip
@@ -117,8 +115,6 @@ Preparing to copy...
 ...
 Successfully copied 3.354MB to makhota-mysql:/tmp
 user@makhota-vm10:~$ docker exec -it makhota-mysql bash
-root@87c55ac2d0c8:/# ls tmp/
-sakila-schema.sql
 root@87c55ac2d0c8:/# mysql -u root -p sakila-db < /tmp/sakila-schema.sql 
 Enter password: 1
 root@87c55ac2d0c8:/# mysql -u root -p sakila < /tmp/sakila-data.sql 
@@ -128,7 +124,8 @@ exit
 ```
 
 
-1.8. При работе в IDE сформируйте ER-диаграмму получившейся базы данных. При работе в командной строке используйте команду для получения всех таблиц базы данных. (скриншот)
+1.8. При работе в командной строке использована команда для получения всех таблиц базы данных. 
+При работе в IDE сформирована ER-диаграмма получившейся базы данных. 
 
 ```sql
 mysql> SHOW DATABASES;
@@ -237,6 +234,9 @@ mysql>  SELECT TABLE_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.key_column_usage 
 *Результатом работы должны быть скриншоты обозначенных заданий, а также простыня со всеми запросами.*
 
 ### *<a name = "3"> Ответ к Заданию 3*</a>*
+
+
+![grants](img/img%202023-03-08%20235252.png)
 
 3.1. Удалены у пользователя sys_temp права на внесение, изменение и удаление данных из базы sakila.
 
